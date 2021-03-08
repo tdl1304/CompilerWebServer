@@ -1,0 +1,26 @@
+#textinput {
+    height: 400px;
+    width: 50%;
+    font-size: 14pt;
+}
+
+#textoutput {
+    height: 200px;
+    width: 50%;
+    font-size: 12pt;
+}
+.btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#logo {
+    height: auto;
+    width: auto;
+}
