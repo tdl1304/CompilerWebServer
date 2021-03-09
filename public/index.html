@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python compiler v1.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="logo">Python Compiler v1.0</h1>
+    <div id="compiler">
+        <br>
+        <textarea id="textinput" rows = 5 cols = 60></textarea>
+        <br>
+        <button class="btn" onclick="compile()">Compile</button>
+    </div>
+    <br>
+    <div id="compiler-output">
+       <textarea id=textoutput rows = 3 cols = 30></textarea>
+    </div>
+
+    <script>
+        function compile() {
+            let code = document.getElementById('textinput');
+            let outputArea = document.getElementById('textoutput');
+            let myHeaders = new Headers();
+            myHeaders.append("Content-Type", "text/plain");
+
+
+
+            let requestOptions = {
+              method: 'POST',
+              headers: myHeaders,
+              body: code.value,
+              redirect: 'follow'
+            };
+
+            fetch("http://localhost:8000", requestOptions, {mode: 'cors', credentials: 'include'})
+              .then(response => response.text())
+              .then(result => {outputArea.value = 'Compiler output:\n'+result; console.log(result);})
+              .catch(error => console.log('error', error));
+        }
+    </script>
+
+</body>
+</html>
