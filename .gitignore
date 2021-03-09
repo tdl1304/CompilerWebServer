@@ -1,2 +1,7 @@
 /venv
 .idea
+/Include
+/Lib
+/Scripts
+pip-selfcheck.json
+pyvenv.cfg
