@@ -1,1 +1,1 @@
-print("Hello compiler")
+print("hi i")

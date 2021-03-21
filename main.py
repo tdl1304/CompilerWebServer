@@ -45,6 +45,27 @@ class Compiler:
 class Handler(BaseHTTPRequestHandler):
     compiler_ = Compiler()
 
+    def do_GET(self):
+        if self.path == '/':
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html')
+            self.end_headers()
+            with open('public/index.html', 'rb') as index:
+                self.wfile.write(index.read())
+        elif self.path == '/style.css':
+            self.send_response(200)
+            self.send_header('Content-type', 'text/css')
+            self.end_headers()
+            with open('public/style.css', 'rb') as style:
+                self.wfile.write(style.read())
+        elif self.path == '/favicon.ico':
+            self.send_response(200)
+            self.send_header('Content-type', 'image/x-icon')
+            self.end_headers()
+            with open('public/favicon.ico', 'rb') as icon:
+                self.wfile.write(icon.read())
+
+    # handles post requests to server
     def do_POST(self):
         if self.headers.get('Content-Length') is not None:
             content_len = int(self.headers.get('Content-Length'))
@@ -73,4 +94,5 @@ def main():
     server.serve_forever()
 
 
-main()
+if __name__ == "__main__":
+    main()
